@@ -2,7 +2,7 @@ let grid = document.querySelector('.grid-container');
 let root = document.querySelector(':root');
 let resetButton = document.querySelector('.reset-button');
 let rangeInput = document.querySelector('input[type=range]')
-console.log(rangeInput.value)
+let labelSize = document.querySelector('#label-size')
 
 function initializeGrid() {
     
@@ -17,6 +17,7 @@ function initializeGrid() {
     }
     let widthBlock = 100 / rangeInput.value;
     root.style.setProperty('--number-of-block', `${widthBlock}%`)
+    labelSize.textContent = `${rangeInput.value} x ${rangeInput.value}`
 }
 
 let mouseDown = false;
