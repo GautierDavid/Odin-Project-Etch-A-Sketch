@@ -1,5 +1,6 @@
 :root {
     --number-of-block: 16;
+    /* --current-color: black; */
 }
 
 .grid-container {
