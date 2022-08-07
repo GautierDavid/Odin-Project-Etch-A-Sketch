@@ -2,10 +2,10 @@ let grid = document.querySelector('.grid-container');
 let root = document.querySelector(':root');
 let resetButton = document.querySelector('.reset-button');
 let rangeInput = document.querySelector('input[type=range]')
-
+console.log(rangeInput.value)
 
 function initializeGrid() {
-    console.log(rangeInput.value)
+    
     grid.innerHTML = ``;
     for(let i = 1; i <= rangeInput.value * rangeInput.value; i++) {
         let div = document.createElement('div');
@@ -42,6 +42,6 @@ function resetColor() {
     block.forEach(el => el.classList.remove('black'))
 }
 
-rangeInput.addEventListener('DOMContentLoaded', initializeGrid)
+document.addEventListener('DOMContentLoaded', initializeGrid)
 rangeInput.addEventListener('change', initializeGrid)
 resetButton.addEventListener('click', resetColor);
