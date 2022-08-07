@@ -3,6 +3,11 @@ let root = document.querySelector(':root');
 let resetButton = document.querySelector('.reset-button');
 let rangeInput = document.querySelector('input[type=range]')
 let labelSize = document.querySelector('#label-size')
+let randomButton = document.querySelector('.button-random-color');
+
+let mouseDown = false;
+let randomButtonStatus = false;
+
 
 function initializeGrid() {
     
@@ -20,10 +25,16 @@ function initializeGrid() {
     labelSize.textContent = `${rangeInput.value} x ${rangeInput.value}`
 }
 
-let mouseDown = false;
+
 function changeColorOnClick(e) {
     let event = e.currentTarget;
-    event.classList.add('black');
+    if(randomButtonStatus) {
+        let randomRed = Math.floor(Math.random()*255);
+        let randomGreen = Math.floor(Math.random()*255);
+        let randomBlue = Math.floor(Math.random()*255);
+        event.style.backgroundColor = `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, 1)`;
+    } else event.style.backgroundColor = "black";
+
     mouseDown = true;
 }
 
@@ -33,16 +44,26 @@ function changeMouseValue() {
 
 function changeColor(e) {
     let event = e.currentTarget;
-    if(mouseDown === true) event.classList.add('black')
+    if(mouseDown && randomButtonStatus){
+        let randomRed = Math.floor(Math.random()*255);
+        let randomGreen = Math.floor(Math.random()*255);
+        let randomBlue = Math.floor(Math.random()*255);
+        event.style.backgroundColor = `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, 1)`;
+    } else if (mouseDown === true)event.style.backgroundColor = "black";
 }
 
-
+function randomButtonStatusChange() {
+    if(randomButtonStatus) randomButtonStatus = false
+    else randomButtonStatus = true
+}
 
 function resetColor() {
     let block = document.querySelectorAll('.block');
-    block.forEach(el => el.classList.remove('black'))
+    block.forEach(el => el.style.backgroundColor = "white")
 }
+
 
 document.addEventListener('DOMContentLoaded', initializeGrid)
 rangeInput.addEventListener('change', initializeGrid)
 resetButton.addEventListener('click', resetColor);
+randomButton.addEventListener('click', randomButtonStatusChange);
