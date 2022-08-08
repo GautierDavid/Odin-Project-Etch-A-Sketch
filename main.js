@@ -5,25 +5,20 @@ let rangeInput = document.querySelector('input[type=range]');
 let colorInput = document.querySelector('input[type=color');
 let labelSize = document.querySelector('#label-size');
 let randomButton = document.querySelector('.button-random-color');
-let darkerButton = document.querySelector('.darker-button');
-let lighterButton = document.querySelector('.lighter-button');
 
-// let darkerButtonState = false;
-// let lighterButtonState = false;
 let mouseDown = false;
 let randomButtonStatus = false;
 let color = colorInput.value;
 
 
 function initializeGrid() {
-    
     grid.innerHTML = ``;
     for(let i = 1; i <= rangeInput.value * rangeInput.value; i++) {
         let div = document.createElement('div');
         div.classList.add('block');
-        div.addEventListener('mouseover', changeColor)
-        div.addEventListener('mousedown', changeColorOnClick)
-        div.addEventListener('mouseup', changeMouseValue)
+        div.addEventListener('mouseover', changeColor);
+        div.addEventListener('mousedown', changeColorOnClick);
+        div.addEventListener('mouseup', changeMouseValue);
         grid.appendChild(div);
     }
     let widthBlock = 100 / rangeInput.value;
@@ -34,12 +29,9 @@ function initializeGrid() {
 
 function changeColorOnClick(e) {
     let event = e.currentTarget;
-    if(randomButtonStatus) {
-        let randomRed = randomTo255();
-        let randomGreen = randomTo255();
-        let randomBlue = randomTo255();
-        event.style.backgroundColor = `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, 1)`;
-    } else event.style.backgroundColor = color;
+
+    if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
+    else event.style.backgroundColor = color;
 
     mouseDown = true;
 }
@@ -50,13 +42,10 @@ function changeMouseValue() {
 
 function changeColor(e) {
     let event = e.currentTarget;
+    
     if(mouseDown){
-        if(randomButtonStatus){
-            let randomRed = randomTo255();
-            let randomGreen = randomTo255();
-            let randomBlue = randomTo255();
-            event.style.backgroundColor = `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, 1)`;
-        } else if (mouseDown === true) event.style.backgroundColor = color;
+        if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
+        else if (mouseDown) event.style.backgroundColor = color;
     }
 }
 
@@ -67,34 +56,10 @@ function randomTo255() {
 }
 
 
-
 function randomButtonStatusChange() {
     return randomButtonStatus ? randomButtonStatus = false : randomButtonStatus = true;
 }
 
-// function darkerButtonStateChange() {
-//     if(darkerButtonState) {
-//         darkerButtonState = false;
-//         darkerButton.textContent = "Active";
-//     } else {
-//         darkerButtonState = true
-//         lighterButtonState = false;
-//         randomButtonStatus = false
-//         darkerButton.textContent = "Deactive";
-//     }
-// }
-
-// function lightherButtonStateChange() {
-//     if(lighterButtonState) {
-//         lighterButtonState = false;
-//         lighterButton.textContent = "Active";
-//     } else {
-//         lighterButtonState = true
-//         darkerButtonState = false;
-//         randomButtonStatus = false;
-//         lighterButton.textContent = "Deactive";
-//     }
-// }
 
 function resetColor() {
     let block = document.querySelectorAll('.block');
@@ -110,5 +75,3 @@ colorInput.addEventListener('input', function() {
     color = colorInput.value;
     rangeInput.style.accentColor = color;
 })
-// darkerButton.addEventListener('click', darkerButtonStateChange);
-// lighterButton.addEventListener('click', lightherButtonStateChange);
