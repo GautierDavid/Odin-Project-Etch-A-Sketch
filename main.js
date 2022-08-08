@@ -21,8 +21,7 @@ function initializeGrid() {
         div.addEventListener('mouseup', changeMouseValue);
         grid.appendChild(div);
     }
-    let widthBlock = 100 / rangeInput.value;
-    root.style.setProperty('--number-of-block', `${widthBlock}%`)
+    root.style.setProperty('--number-of-block', `${rangeInput.value}`)
     labelSize.textContent = `${rangeInput.value} x ${rangeInput.value}`
 }
 
@@ -42,7 +41,7 @@ function changeMouseValue() {
 
 function changeColor(e) {
     let event = e.currentTarget;
-    
+
     if(mouseDown){
         if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
         else if (mouseDown) event.style.backgroundColor = color;
