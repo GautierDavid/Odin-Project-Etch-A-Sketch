@@ -6,27 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Etch-A-Sketch</title>
 
+    <script src="https://kit.fontawesome.com/7a878198b9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Project: Etch-A-Sketch</h1>
+    <div class="content-wrap">
+        <header>
+            <h1>Project: Etch-A-Sketch</h1>
+        </header>
+        <div class="main-container">
+        
+            <div class="configuration-container">
+                <div class="range-container">
+                    <label for="size" id="label-size"></label>
+                    <input type="range" value="16" name="size">
+                </div>
+                <button class="button-random-color">Rainbow Color</button>
+                <input type="color">
+                <button class="eraser-button">Eraser</button>
+                <button class="reset-button">Reset</button>
+            </div>
 
-<div class="main-container">
-    <div class="configuration-container">
-        <div class="range-container">
-            <label for="size" id="label-size"></label>
-            <input type="range" value="16" name="size">
+            <div class="grid-container">
+
+            </div>
         </div>
-        <button class="button-random-color">Rainbow Color</button>
-        <input type="color">
-        <button class="eraser-button">Eraser</button>
-        <button class="reset-button">Reset</button>
     </div>
 
-    <div class="grid-container">
-
-    </div>
-</div>
+    <footer>
+        <p>Build and design by GautierDavid | <a href="https://github.com/GautierDavid" target="_blank"><i class="fa-brands fa-github"></i></a></p> 
+    </footer>
 
     <script src="main.js"></script>
 </body>
