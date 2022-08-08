@@ -69,13 +69,7 @@ function randomTo255() {
 
 
 function randomButtonStatusChange() {
-    if(randomButtonStatus) {
-        randomButtonStatus = false;
-        randomButton.textContent = "Active Random Color";
-    } else {
-        randomButtonStatus = true
-        randomButton.textContent = "Deactive Random Color";
-    }
+    return randomButtonStatus ? randomButtonStatus = false : randomButtonStatus = true;
 }
 
 // function darkerButtonStateChange() {
