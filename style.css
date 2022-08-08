@@ -17,10 +17,10 @@
 }
 
 .black {
-    background-color: black;
+    background-color: rgba(0, 0, 0);
 }
 
 input[type=range] {
-    accent-color: black;
+    accent-color: rgba(0, 0, 0);
 }
 
