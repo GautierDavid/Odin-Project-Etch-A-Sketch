@@ -5,7 +5,9 @@ let rangeInput = document.querySelector('input[type=range]');
 let colorInput = document.querySelector('input[type=color');
 let labelSize = document.querySelector('#label-size');
 let randomButton = document.querySelector('.button-random-color');
+let eraserButton = document.querySelector('.eraser-button');
 
+let eraserButtonState = false;
 let mouseDown = false;
 let randomButtonStatus = false;
 let color = colorInput.value;
@@ -28,8 +30,8 @@ function initializeGrid() {
 
 function changeColorOnClick(e) {
     let event = e.currentTarget;
-
-    if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
+    if(eraserButtonState) event.style.backgroundColor = "rgb(255, 255, 255)";
+    else if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
     else event.style.backgroundColor = color;
 
     mouseDown = true;
@@ -43,7 +45,8 @@ function changeColor(e) {
     let event = e.currentTarget;
 
     if(mouseDown){
-        if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
+        if(eraserButtonState) event.style.backgroundColor = "rgb(255, 255, 255)";
+        else if(randomButtonStatus) event.style.backgroundColor = `rgb(${randomTo255()}, ${randomTo255()}, ${randomTo255()})`;
         else if (mouseDown) event.style.backgroundColor = color;
     }
 }
@@ -56,7 +59,28 @@ function randomTo255() {
 
 
 function randomButtonStatusChange() {
-    return randomButtonStatus ? randomButtonStatus = false : randomButtonStatus = true;
+    if(randomButtonStatus) randomButtonStatus = false;
+    else {
+        randomButtonStatus = true;
+        eraserButtonState = false;
+    }
+}
+
+
+function changeEraserButtonState() {
+    if(eraserButtonState) eraserButtonState = false;
+    else {
+        eraserButtonState = true;
+        randomButtonStatus = false;
+    }
+}
+
+
+function pickAColor() {
+    color = colorInput.value;
+    rangeInput.style.accentColor = color;
+    randomButtonStatus = false;
+    eraserButtonState = false;
 }
 
 
@@ -70,7 +94,5 @@ document.addEventListener('DOMContentLoaded', initializeGrid)
 rangeInput.addEventListener('change', initializeGrid)
 resetButton.addEventListener('click', resetColor);
 randomButton.addEventListener('click', randomButtonStatusChange);
-colorInput.addEventListener('input', function() {
-    color = colorInput.value;
-    rangeInput.style.accentColor = color;
-})
+eraserButton.addEventListener('click', changeEraserButtonState);
+colorInput.addEventListener('input', pickAColor)

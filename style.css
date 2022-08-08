@@ -2,20 +2,50 @@
     --number-of-block: 16;
 }
 
+.black {
+    background-color: rgba(0, 0, 0);
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(var(--number-of-block), 1fr);
     width: 500px;
     height: 500px;
     border: 1px black solid;
-    margin-inline: auto;
 }
 
-.black {
-    background-color: rgba(0, 0, 0);
+input {
+    cursor: pointer;
 }
 
 input[type=range] {
-    accent-color: rgba(0, 0, 0);
+    accent-color: rgb(0, 0, 0);
 }
 
+.main-container {
+    display: flex;
+    gap: 12rem;
+}
+
+.configuration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 300px;
+}
+
+.range-container {
+    display: flex;
+    flex-direction: column;
+}
+
+label[for=size] {
+    align-self: center;
+}

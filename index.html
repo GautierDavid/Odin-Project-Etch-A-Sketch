@@ -10,17 +10,23 @@
 </head>
 <body>
     <h1>Project: Etch-A-Sketch</h1>
+
+<div class="main-container">
+    <div class="configuration-container">
+        <div class="range-container">
+            <label for="size" id="label-size"></label>
+            <input type="range" value="16" name="size">
+        </div>
+        <button class="button-random-color">Rainbow Color</button>
+        <input type="color">
+        <button class="eraser-button">Eraser</button>
+        <button class="reset-button">Reset</button>
+    </div>
+
     <div class="grid-container">
 
     </div>
-    <label for="size" id="label-size"></label>
-    <input type="range" value="16" name="size">
-
-    <button class="button-random-color">Active Random Color</button>
-    <input type="color" value="#000000">
-    <!-- <button class="darker-button">darker</button>
-    <button class="lighter-button">lighter</button> -->
-    <button class="reset-button">reset</button>
+</div>
 
     <script src="main.js"></script>
 </body>
